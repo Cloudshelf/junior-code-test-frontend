@@ -1,0 +1,16 @@
+schema:
+  - https://dev-cloudshelf.myshopify.com/api/graphql:
+      headers:
+        X-Shopify-Storefront-Access-Token: ${SHOPIFY_ACCESS_TOKEN}
+overwrite: true
+generates:
+  ./generated/shopify_types.tsx:
+    documents:
+      - './**/*.graphql'
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
